@@ -16,19 +16,30 @@ public class EscapePanel extends JPanel implements KeyListener, ActionListener{
 	Font menuFont;
 	Font menuFont2;
 	Timer frameDraw;
+	
+	Batmobile Batcar = new Batmobile(165, 250, 85, 85);
+	Clock Clack = new Clock(320,25, 65, 65);
+	Safe Saf = new Safe(90, 390, 150,150);
+	Alfred Fred = new Alfred(125, 250, 150, 175);
+	Table Lab = new Table(410, 275, 100, 50, Saf);
+	EscapeManager EManager = new EscapeManager(Batcar, Clack, Saf, Fred, Lab);
 	public static BufferedImage image;
+	public static BufferedImage image2;
+	public static BufferedImage image3;
 	public static boolean needImage = true;
 	public static boolean gotImage = false;	
 	EscapePanel(){
 		addKeyListener(this);
+		
 		menuFont = new Font("Javanese Text", Font.PLAIN, 60);
 		frameDraw = new Timer(1000 / 60, this);
 		frameDraw.start();
-		if (needImage){//&& (currentState == GAME)) {	
-		    loadImage ("BatcaveBackground.png");
-		} //else if ((needImage) && (currentState == GAME2)) {
-			//loadImage ("BatcaveBackground2.png");
-	//	}
+		if (needImage){
+			
+		 image = loadImage ("BatcaveBackground.png");  
+		 image2 = loadImage("BatcaveBackground2.jpg");
+		image3 = loadImage ("BatcaveBackground3.png");
+		}	
 	}
 	public void paintComponent(Graphics g) {
 		if (currentState == MENU) {
@@ -92,23 +103,30 @@ public class EscapePanel extends JPanel implements KeyListener, ActionListener{
 			g.setColor(Color.GREEN);
 			g.fillRect(0, 0, GameHome.width, GameHome.height);
 		}
-		//EscapeManager.draw(g);
+EManager.draw(g);
 	}
 	
 	void drawGame2State(Graphics g) {
-		// TODO Auto-generated method stub
-		//if (gotImage) {
-		//	g.drawImage(image, 0, 0, GameHome.width, GameHome.height, null);
-		//} else
+		 //TODO Auto-generated method stub
+		if (gotImage) {
+			g.drawImage(image2, 0, 0, GameHome.width, GameHome.height, null);
+		} else
 		{
 			g.setColor(Color.DARK_GRAY);
 			g.fillRect(0, 0, GameHome.width, GameHome.height);
 		}
+		EManager.draw2(g);
 	}
 	
 	void drawGame3State(Graphics g) {
+		if (gotImage) {
+			g.drawImage(image3, 0, 0, GameHome.width, GameHome.height, null);
+		} else {
 		// TODO Auto-generated method stub
-		
+		g.setColor(Color.DARK_GRAY);
+		g.fillRect(0, 0, GameHome.width, GameHome.height);
+		}
+		EManager.draw3(g);
 	}
 
 	void drawEndState(Graphics g) {
@@ -147,6 +165,31 @@ public class EscapePanel extends JPanel implements KeyListener, ActionListener{
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			if (currentState == GAME) {
 				currentState = GAME2;
+				addMouseListener(Batcar);
+				addMouseListener(Clack);
+				addMouseListener(Lab);
+				removeMouseListener(Fred);
+			} else if (currentState == GAME2) {
+				currentState = GAME3;
+				addMouseListener(Saf);
+				removeMouseListener(Batcar);
+				removeMouseListener(Clack);
+				removeMouseListener(Lab);
+			}
+				
+		} if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+			if (currentState == GAME2) {
+				currentState = GAME;
+				removeMouseListener(Batcar);
+				removeMouseListener(Clack);
+				removeMouseListener(Lab);
+				addMouseListener(Fred);
+			} else if (currentState == GAME3) {
+				currentState = GAME2;
+				removeMouseListener(Saf);
+				addMouseListener(Batcar);
+				addMouseListener(Clack);
+				addMouseListener(Lab);
 			}
 			
 		}
@@ -158,15 +201,17 @@ public class EscapePanel extends JPanel implements KeyListener, ActionListener{
 		
 	}
 	
-	void loadImage(String imageFile) {
+	BufferedImage loadImage(String imageFile) {
 	    if (needImage) {
 	        try {
-	            image = ImageIO.read(this.getClass().getResourceAsStream(imageFile));
-		    gotImage = true;
+	        	  gotImage = true;
+	             return ImageIO.read(this.getClass().getResourceAsStream(imageFile));
+		  
 	        } catch (Exception e) {
 	            
 	        }
 	        needImage = false;
 	    }
+	    return null;
 	}
 }

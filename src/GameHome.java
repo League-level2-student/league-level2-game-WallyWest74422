@@ -1,3 +1,7 @@
+//Clock on second screen will give code to unlock a safe on third screen, which will contain Batman's Mug
+
+
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -42,8 +46,9 @@ public void actionPerformed(ActionEvent e) {
 		if (e.getSource()==button) {
 		if (EPanel.currentState == EPanel.MENU) {
 			EPanel.currentState = EPanel.GAME;
-			//EPanel.remove(button);
-			//EPanel.remove(button2);
+			EPanel.remove(button);
+			EPanel.remove(button2);
+			frame.requestFocus();
 		}
 	} else if (e.getSource()==button2) {
 		JOptionPane.showMessageDialog(null, "Click on objects to find clues, which you can use to help you escape the Batcave. Use the Left and Right arrow keys to traverse between the different rooms. Good Luck :)");
