@@ -20,9 +20,14 @@ public class EscapePanel extends JPanel implements KeyListener, ActionListener{
 	Batmobile Batcar = new Batmobile(165, 250, 85, 85);
 	Clock Clack = new Clock(320,25, 65, 65);
 	Safe Saf = new Safe(90, 390, 150,150);
-	Alfred Fred = new Alfred(125, 250, 150, 175);
+	Penny Benny = new Penny(340, 150, 125, 125);
+	Broom Sweep = new Broom(360, 170, 75, 75, Benny);
+	Alfred Fred = new Alfred(125, 250, 150, 175, Sweep);
 	Table Lab = new Table(410, 275, 100, 50, Saf);
-	EscapeManager EManager = new EscapeManager(Batcar, Clack, Saf, Fred, Lab);
+	Box Xob = new Box(170, 150, 50, 50, Lab);
+
+
+	EscapeManager EManager = new EscapeManager(Batcar, Clack, Saf, Fred, Lab, Xob, Sweep, Benny);
 	public static BufferedImage image;
 	public static BufferedImage image2;
 	public static BufferedImage image3;
@@ -161,7 +166,6 @@ EManager.draw(g);
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println(e.getKeyCode());
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			if (currentState == GAME) {
 				currentState = GAME2;
@@ -169,9 +173,12 @@ EManager.draw(g);
 				addMouseListener(Clack);
 				addMouseListener(Lab);
 				removeMouseListener(Fred);
+				removeMouseListener(Xob);
 			} else if (currentState == GAME2) {
 				currentState = GAME3;
 				addMouseListener(Saf);
+				addMouseListener(Benny);
+				addMouseListener(Sweep);
 				removeMouseListener(Batcar);
 				removeMouseListener(Clack);
 				removeMouseListener(Lab);
@@ -184,9 +191,12 @@ EManager.draw(g);
 				removeMouseListener(Clack);
 				removeMouseListener(Lab);
 				addMouseListener(Fred);
+				addMouseListener(Xob);
 			} else if (currentState == GAME3) {
 				currentState = GAME2;
 				removeMouseListener(Saf);
+				removeMouseListener(Benny);
+				removeMouseListener(Sweep);
 				addMouseListener(Batcar);
 				addMouseListener(Clack);
 				addMouseListener(Lab);

@@ -52,12 +52,11 @@ public void mousePressed(MouseEvent e) {
 	// TODO Auto-generated method stub
 	if (e.getX()>90 && e.getX()<240) {
 		if(e.getY()>390 && e.getY()<540) {
+			if(opened == false) {
 			String answer =	 JOptionPane.showInputDialog("Please enter the 4-digit (No spaces) code to to unlock the safe.");
 			int code = Integer.parseInt(answer);
 			if (code == 1155) {
-				System.out.println("Opened is true.");
-				JOptionPane.showMessageDialog(null, "Opened is true.");
-				//JOptionPane.showMessageDialog(null, "You found Batman's mug inside the safe!");
+				JOptionPane.showMessageDialog(null, "You found Batman's mug inside the safe!");
 				opened = true;
 			}else {
 				JOptionPane.showMessageDialog(null, "Sorry, that wasn't correct!");
@@ -65,6 +64,7 @@ public void mousePressed(MouseEvent e) {
 			}
 			}
 		}
+	}
 	}
 
 @Override

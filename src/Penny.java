@@ -1,24 +1,21 @@
-import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
-
 import javax.imageio.ImageIO;
-import javax.swing.JOptionPane;
+import java.awt.Color;
+import java.awt.Graphics;
 
-public class Alfred extends EscapeObject implements MouseListener {
+public class Penny extends EscapeObject implements MouseListener {
 	public static BufferedImage image;
 	public static boolean needImage = true;
 	public static boolean gotImage = false;
-	private Broom broom;
+	int PennyMoved = 0;
 
-	Alfred(int x, int y, int width, int length, Broom broom) {
+	Penny(int x, int y, int width, int length) {
 		super(x, y, width, length);
-		speed = 10;
-		this.broom = broom;
+		speed = 25;
 		if (needImage) {
-			loadImage("Alfred.png");
+			loadImage("Penny.png");
 
 		}
 	}
@@ -57,12 +54,11 @@ public class Alfred extends EscapeObject implements MouseListener {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		if (e.getX() > 155 && e.getX() < 230) {
-			if (e.getY() > 250 && e.getY() < 425) {
-				if(broom.BroomTaken ==1) {
-					JOptionPane.showMessageDialog(null, "Thank you so much! As a thank you, here is....." );
-				}else {
-				JOptionPane.showMessageDialog(null, "I will help you if you can return my broom to me!");
+		if (e.getX() > 340 && e.getX() < 465) {
+			if (e.getY() > 150 && e.getY() < 275) {
+				if (PennyMoved < 3) {
+					x += speed;
+					PennyMoved = PennyMoved + 1;
 				}
 			}
 		}
@@ -85,5 +81,4 @@ public class Alfred extends EscapeObject implements MouseListener {
 		// TODO Auto-generated method stub
 
 	}
-
 }

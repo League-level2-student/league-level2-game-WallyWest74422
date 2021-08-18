@@ -1,5 +1,3 @@
-import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
@@ -7,20 +5,22 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 
-public class Table extends EscapeObject implements MouseListener{
+import java.awt.Color;
+import java.awt.Graphics;
+class Box extends EscapeObject implements MouseListener{
 	public static BufferedImage image;
 	public static boolean needImage = true;
 	public static boolean gotImage = false;	
-	int Science = 0;
-	private Safe safe;
-	Table(int x, int y, int width, int length, Safe safe) {
+	private Table table;
+	int BoxOpened = 0;
+	Box(int x, int y, int width, int length, Table table){
 		super(x, y, width, length);
 		speed =10;
-		this.safe = safe;
-		if (needImage) {
-			    loadImage ("Table.png");
-			
-		}
+		this.table = table;
+	if (needImage) {
+		    loadImage ("Box.png");
+		
+	}
 	}
 	void update() {
 		super.update();
@@ -52,21 +52,17 @@ public void mouseClicked(MouseEvent e) {
 @Override
 public void mousePressed(MouseEvent e) {
 	// TODO Auto-generated method stub
-	if (e.getX()>410 && e.getX()<510) {
-		if(e.getY()>275 && e.getY()<325) {
-			if (Science < 2) {
-			if(safe.opened == false) {
-JOptionPane.showMessageDialog(null, "Looks like some sort of lab equipment.");
-			} else {
-					JOptionPane.showMessageDialog(null, "You used Batman's mug to make a copy of Batman's fingerprint!");
-					Science = Science +1;
-
-				
+	if (e.getX()>170 && e.getX()<220) {
+		if(e.getY()>150 && e.getY()<200) {
+			if(BoxOpened <2) {
+			if(table.Science>0) {
+				JOptionPane.showMessageDialog(null, "You used the fingerprint to open the box and found a _____.");
+				BoxOpened = BoxOpened +1;
+			}else {
+	JOptionPane.showMessageDialog(null, "This box requires a fingerprint to unlock.");
 			}
-			}
-}
-	}
-}
+}}
+	}}
 @Override
 public void mouseReleased(MouseEvent e) {
 	// TODO Auto-generated method stub

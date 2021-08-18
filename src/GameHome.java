@@ -25,7 +25,6 @@ GameHome(){
 	button = new JButton("PLAY");
 	button2 = new JButton("INSTRUCTIONS");
 	EPanel = new EscapePanel();
-	System.out.println("HI.");
 	EPanel.setLayout(null);
 	button.setBounds(200, 400, 200, 75);
 	button2.setBounds(200, 310, 200, 75);
