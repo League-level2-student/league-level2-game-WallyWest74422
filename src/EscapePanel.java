@@ -25,9 +25,10 @@ public class EscapePanel extends JPanel implements KeyListener, ActionListener{
 	Alfred Fred = new Alfred(125, 250, 150, 175, Sweep);
 	Table Lab = new Table(410, 275, 100, 50, Saf);
 	Box Xob = new Box(170, 150, 50, 50, Lab);
+	Math Ematics = new Math(155, 200, 45, 45);
+	Math2 School = new Math2(105, 120, 25, 25);
 
-
-	EscapeManager EManager = new EscapeManager(Batcar, Clack, Saf, Fred, Lab, Xob, Sweep, Benny);
+	EscapeManager EManager = new EscapeManager(Batcar, Clack, Saf, Fred, Lab, Xob, Sweep, Benny, Ematics, School);
 	public static BufferedImage image;
 	public static BufferedImage image2;
 	public static BufferedImage image3;
@@ -55,6 +56,8 @@ public class EscapePanel extends JPanel implements KeyListener, ActionListener{
 			drawGame2State(g);
 		} if (currentState == GAME3) {
 			drawGame3State(g);
+		}if(currentState == GAME4) {
+			drawGame4State(g);
 		}if (currentState == END) {
 			drawEndState(g);
 		}
@@ -66,7 +69,8 @@ public class EscapePanel extends JPanel implements KeyListener, ActionListener{
 	final int GAME = 1;
 	final int GAME2 = 2;
 	final int GAME3 = 3;
-	final int END = 4;
+	final int GAME4 = 4;
+	final int END = 5;
 	int currentState = MENU;
 	
 	void updateMenuState() {
@@ -79,6 +83,10 @@ public class EscapePanel extends JPanel implements KeyListener, ActionListener{
 	}
 
 	void updateGame3State() {	
+	}
+	
+	void updateGame4State() {
+		
 	}
 	
 	void updateEndState() {
@@ -133,6 +141,17 @@ EManager.draw(g);
 		}
 		EManager.draw3(g);
 	}
+	
+	void drawGame4State (Graphics g) {
+		if (gotImage) {
+			g.drawImage(image3, 0, 0, GameHome.width, GameHome.height, null);
+		} else {
+			// TODO Auto-generated method stub
+			g.setColor(Color.DARK_GRAY);
+			g.fillRect(0, 0, GameHome.width, GameHome.height);
+			}
+			EManager.draw4(g);
+	}
 
 	void drawEndState(Graphics g) {
 		// TODO Auto-generated method stub
@@ -151,6 +170,8 @@ EManager.draw(g);
 			updateGame2State();
 		} else if (currentState == GAME3) {
 			updateGame3State();
+		} else if (currentState == GAME4) {
+			updateGame4State();
 		} else if (currentState == END) {
 			updateEndState();
 		}
@@ -202,6 +223,10 @@ EManager.draw(g);
 				addMouseListener(Lab);
 			}
 			
+		} if (e.getKeyCode() == KeyEvent.VK_UP) {
+			if((Sweep.BroomTaken == 2) && (currentState == GAME)){
+				currentState = GAME3;
+			}
 		}
 	}
 

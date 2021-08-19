@@ -61,6 +61,7 @@ public class Alfred extends EscapeObject implements MouseListener {
 			if (e.getY() > 250 && e.getY() < 425) {
 				if(broom.BroomTaken ==1) {
 					JOptionPane.showMessageDialog(null, "Thank you so much! As a thank you, here is....." );
+					broom.BroomTaken =2;
 				}else {
 				JOptionPane.showMessageDialog(null, "I will help you if you can return my broom to me!");
 				}
