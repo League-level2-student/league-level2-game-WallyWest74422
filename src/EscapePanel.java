@@ -27,11 +27,13 @@ public class EscapePanel extends JPanel implements KeyListener, ActionListener{
 	Box Xob = new Box(170, 150, 50, 50, Lab);
 	Math Ematics = new Math(155, 200, 45, 45);
 	Math2 School = new Math2(105, 120, 25, 25);
+	
 
 	EscapeManager EManager = new EscapeManager(Batcar, Clack, Saf, Fred, Lab, Xob, Sweep, Benny, Ematics, School);
 	public static BufferedImage image;
 	public static BufferedImage image2;
 	public static BufferedImage image3;
+	public static BufferedImage image4;
 	public static boolean needImage = true;
 	public static boolean gotImage = false;	
 	EscapePanel(){
@@ -45,6 +47,7 @@ public class EscapePanel extends JPanel implements KeyListener, ActionListener{
 		 image = loadImage ("BatcaveBackground.png");  
 		 image2 = loadImage("BatcaveBackground2.jpg");
 		image3 = loadImage ("BatcaveBackground3.png");
+		image4 = loadImage ("WayneManorBackground.jpg");
 		}	
 	}
 	public void paintComponent(Graphics g) {
@@ -144,7 +147,7 @@ EManager.draw(g);
 	
 	void drawGame4State (Graphics g) {
 		if (gotImage) {
-			g.drawImage(image3, 0, 0, GameHome.width, GameHome.height, null);
+			g.drawImage(image4, 0, 0, GameHome.width, GameHome.height, null);
 		} else {
 			// TODO Auto-generated method stub
 			g.setColor(Color.DARK_GRAY);
@@ -225,7 +228,11 @@ EManager.draw(g);
 			
 		} if (e.getKeyCode() == KeyEvent.VK_UP) {
 			if((Sweep.BroomTaken == 2) && (currentState == GAME)){
-				currentState = GAME3;
+				currentState = GAME4;
+			}
+		} if (e.getKeyCode()== KeyEvent.VK_DOWN) {
+			if(currentState == GAME4) {
+				currentState = GAME;
 			}
 		}
 	}

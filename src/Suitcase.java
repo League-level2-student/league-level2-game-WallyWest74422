@@ -1,5 +1,3 @@
-import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
@@ -7,18 +5,19 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 
-public class Alfred extends EscapeObject implements MouseListener {
+import java.awt.Color;
+import java.awt.Graphics;
+
+public class Suitcase extends EscapeObject implements MouseListener {
 	public static BufferedImage image;
 	public static boolean needImage = true;
 	public static boolean gotImage = false;
-	private Broom broom;
 
-	Alfred(int x, int y, int width, int length, Broom broom) {
+	Suitcase(int x, int y, int width, int length) {
 		super(x, y, width, length);
 		speed = 10;
-		this.broom = broom;
 		if (needImage) {
-			loadImage("Alfred.png");
+			loadImage("Suitcase.png");
 
 		}
 	}
@@ -57,14 +56,9 @@ public class Alfred extends EscapeObject implements MouseListener {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		if (e.getX() > 155 && e.getX() < 230) {
-			if (e.getY() > 250 && e.getY() < 425) {
-				if(broom.BroomTaken ==1) {
-					JOptionPane.showMessageDialog(null, "Thank you so much! Here is the key to Wayne Manor. Use the UP key to access it." );
-					broom.BroomTaken =2;
-				}else {
-				JOptionPane.showMessageDialog(null, "I will help you if you can return my broom to me!");
-				}
+		if (e.getX() > 170 && e.getX() < 220) {
+			if (e.getY() > 150 && e.getY() < 200) {
+				JOptionPane.showInputDialog("Enter 6-digit combination to unlock.");
 			}
 		}
 	}
@@ -86,5 +80,4 @@ public class Alfred extends EscapeObject implements MouseListener {
 		// TODO Auto-generated method stub
 
 	}
-
 }
