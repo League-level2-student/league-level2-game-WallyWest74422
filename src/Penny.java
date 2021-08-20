@@ -54,8 +54,8 @@ public class Penny extends EscapeObject implements MouseListener {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		if (e.getX() > 340 && e.getX() < 465) {
-			if (e.getY() > 150 && e.getY() < 275) {
+		if (e.getX() > 360 && e.getX() < 475) {
+			if (e.getY() > 150 && e.getY() < 265) {
 				if (PennyMoved < 3) {
 					x += speed;
 					PennyMoved = PennyMoved + 1;

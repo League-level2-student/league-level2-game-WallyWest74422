@@ -62,7 +62,7 @@ public class Alfred extends EscapeObject implements MouseListener {
 				if(broom.BroomTaken ==1) {
 					JOptionPane.showMessageDialog(null, "Thank you so much! Here is the key to Wayne Manor. Use the UP key to access it." );
 					broom.BroomTaken =2;
-				}else {
+				}else if (broom.BroomTaken==0){
 				JOptionPane.showMessageDialog(null, "I will help you if you can return my broom to me!");
 				}
 			}

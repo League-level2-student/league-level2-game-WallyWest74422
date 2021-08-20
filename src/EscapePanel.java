@@ -20,16 +20,18 @@ public class EscapePanel extends JPanel implements KeyListener, ActionListener{
 	Batmobile Batcar = new Batmobile(165, 250, 85, 85);
 	Clock Clack = new Clock(320,25, 65, 65);
 	Safe Saf = new Safe(90, 390, 150,150);
-	Penny Benny = new Penny(340, 150, 125, 125);
-	Broom Sweep = new Broom(360, 170, 75, 75, Benny);
+	Dino Rex = new Dino(450, 160, 140, 140);
+	Penny Benny = new Penny(360, 150, 115, 115);
+	Broom Sweep = new Broom(375, 170, 75, 75, Benny);
 	Alfred Fred = new Alfred(125, 250, 150, 175, Sweep);
 	Table Lab = new Table(410, 275, 100, 50, Saf);
 	Box Xob = new Box(170, 150, 50, 50, Lab);
 	Math Ematics = new Math(155, 200, 45, 45);
 	Math2 School = new Math2(105, 120, 25, 25);
-	
+	Suitcase Key = new Suitcase(350, 250, 120, 120);
+	Card Joker = new Card(260, 150, 90, 110);
 
-	EscapeManager EManager = new EscapeManager(Batcar, Clack, Saf, Fred, Lab, Xob, Sweep, Benny, Ematics, School);
+	EscapeManager EManager = new EscapeManager(Batcar, Clack, Saf, Fred, Lab, Xob, Sweep, Rex, Benny, Ematics, School, Key, Joker);
 	public static BufferedImage image;
 	public static BufferedImage image2;
 	public static BufferedImage image3;
@@ -202,6 +204,8 @@ EManager.draw(g);
 				currentState = GAME3;
 				addMouseListener(Saf);
 				addMouseListener(Benny);
+				addMouseListener(Joker);
+				addMouseListener(Rex);
 				addMouseListener(Sweep);
 				removeMouseListener(Batcar);
 				removeMouseListener(Clack);
@@ -220,6 +224,8 @@ EManager.draw(g);
 				currentState = GAME2;
 				removeMouseListener(Saf);
 				removeMouseListener(Benny);
+				removeMouseListener(Joker);
+				removeMouseListener(Rex);
 				removeMouseListener(Sweep);
 				addMouseListener(Batcar);
 				addMouseListener(Clack);
@@ -229,9 +235,15 @@ EManager.draw(g);
 		} if (e.getKeyCode() == KeyEvent.VK_UP) {
 			if((Sweep.BroomTaken == 2) && (currentState == GAME)){
 				currentState = GAME4;
+				addMouseListener(Key);
+				removeMouseListener(Fred);
+				removeMouseListener(Xob);
 			}
 		} if (e.getKeyCode()== KeyEvent.VK_DOWN) {
 			if(currentState == GAME4) {
+				removeMouseListener(Key);
+				addMouseListener(Fred);
+				addMouseListener(Xob);
 				currentState = GAME;
 			}
 		}

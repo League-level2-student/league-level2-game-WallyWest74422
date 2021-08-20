@@ -7,11 +7,14 @@ Alfred Fred;
 Table Lab;
 Box Xob;
 Broom Sweep;
+Dino Rex;
 Penny Benny;
 Math Ematics;
 Math2 School;
+Suitcase Key;
+Card Joker;
 
-EscapeManager(Batmobile a, Clock b, Safe c, Alfred d, Table e, Box f, Broom g, Penny h, Math i, Math2 j) {
+EscapeManager(Batmobile a, Clock b, Safe c, Alfred d, Table e, Box f, Broom g, Dino h, Penny i, Math j, Math2 k, Suitcase l, Card m) {
 	Batcar = a;
 	Clack = b;
 	Saf = c;
@@ -19,9 +22,12 @@ EscapeManager(Batmobile a, Clock b, Safe c, Alfred d, Table e, Box f, Broom g, P
 	Lab = e;
 	Xob = f;
 	Sweep = g;
-	Benny = h;
-	Ematics = i;
-	School = j;
+	Rex = h;
+	Benny = i;
+	Ematics = j;
+	School = k;
+	Key = l;
+	Joker = m;
 }
 
 void update() {
@@ -32,9 +38,12 @@ void update() {
 	Lab.update();
 	Xob.update();
 	Sweep.update();
+	Rex.update();
 	Benny.update();
 	Ematics.update();
 	School.update();
+	Key.update();
+	Joker.update();
 	}
 
 public void draw(Graphics g) {
@@ -51,11 +60,13 @@ public void draw2(Graphics g) {
 public void draw3(Graphics g) {
 	Saf.draw(g);
 	Sweep.draw(g);
+	Rex.draw(g);
 	Benny.draw(g);
 	Ematics.draw(g);
+	Joker.draw(g);
 }
 public void draw4(Graphics g) {
-	
+	Key.draw(g);
 }
 
 }

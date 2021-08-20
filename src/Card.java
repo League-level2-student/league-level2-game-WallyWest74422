@@ -1,23 +1,22 @@
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
+
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 
 import java.awt.Color;
 import java.awt.Graphics;
-public class Broom extends EscapeObject implements MouseListener{
+public class Card extends EscapeObject implements MouseListener{
 	public static BufferedImage image;
 	public static boolean needImage = true;
 	public static boolean gotImage = false;
-int BroomTaken = 0;
-private Penny penny;
-	Broom(int x, int y, int width, int length, Penny penny) {
+
+	Card(int x, int y, int width, int length) {
 		super(x, y, width, length);
-		speed = 25;
-		this.penny = penny;
+		speed = 10;
 		if (needImage) {
-			loadImage("Broom.png");
+			loadImage("Card.jpg");
 
 		}
 	}
@@ -56,20 +55,12 @@ private Penny penny;
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		if (e.getX() > 375 && e.getX() < 450) {
-			if (e.getY() > 170 && e.getY() < 245) {
-				if(penny.PennyMoved == 3) {
-					if(BroomTaken <1) {
-JOptionPane.showMessageDialog(null, "You took Alfred's Broom.");
-BroomTaken = 1;
-x+=speed;
-x+= speed;
-					}
-				}
-			}
+		if (e.getX() > 260 && e.getX() < 350) {
+			if (e.getY() > 175 && e.getY() < 285) {
+				JOptionPane.showMessageDialog(null, "Looks creepy.");
 		}
 	}
-
+	}
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
