@@ -62,17 +62,18 @@ public class Robin extends EscapeObject implements MouseListener {
 			if (e.getY() > 220 && e.getY() < 385) {
 				if(box.BoxOpened==0) {
 					JOptionPane.showMessageDialog(null, "Batman needs my help! Can you help me find the remote to the Bat-Signal and my Batarang?");
-				}else if (box.BoxOpened<5){
+				}else if((box.BoxOpened<5)&&(batarangFound == false)) {
+					JOptionPane.showMessageDialog(null, "Batman needs my help! Can you help me find the remote to the Bat-Signal and my Batarang?");
+				}else if ((box.BoxOpened<5)&& (batarangFound == true)){
 					JOptionPane.showMessageDialog(null, "Thanks! Before I go, here's Batman's suitcase. I wasn't able to unlock it, but it might be of use to you.");
-					x+=speed;
-					x+=speed;
 					x+=speed;
 					x+=speed;
 					x+=speed;
 					box.BoxOpened = 10;
 				}
 			}
-		}else if (e.getX() > 220 && e.getX() < 250) {
+		}
+		if (e.getX() > 220 && e.getX() < 270) {
 			if (e.getY() > 300 && e.getY() < 380) {
 				JOptionPane.showMessageDialog(null, "You found a batarang inside the couch cushion!");
 				batarangFound = true;

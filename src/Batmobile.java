@@ -61,7 +61,7 @@ public class Batmobile extends EscapeObject implements MouseListener {
 			if (e.getY() > 250 && e.getY() < 335) {
 				if (suitcase.suitcaseOpened == false) {
 					JOptionPane.showMessageDialog(null, "Looks like you need a key to turn it on.");
-				}else {
+				}else if(suitcase.suitcaseOpened == true){
 					JOptionPane.showMessageDialog(null, "You used the Batmobile to break out of the Batcave!");
 					EscapePanel.gameComplete = true;
 				}
