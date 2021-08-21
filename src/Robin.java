@@ -75,8 +75,10 @@ public class Robin extends EscapeObject implements MouseListener {
 		}
 		if (e.getX() > 220 && e.getX() < 270) {
 			if (e.getY() > 300 && e.getY() < 380) {
-				JOptionPane.showMessageDialog(null, "You found a batarang inside the couch cushion!");
-				batarangFound = true;
+				if(batarangFound == false) {
+					JOptionPane.showMessageDialog(null, "You found a batarang inside the couch cushion!");
+					batarangFound = true;
+				}
 			}
 		}
 	}
