@@ -13,10 +13,11 @@ public class Suitcase extends EscapeObject implements MouseListener {
 	public static boolean needImage = true;
 	public static boolean gotImage = false;
 	boolean suitcaseOpened = false;
-
-	Suitcase(int x, int y, int width, int length) {
+	private Box box;
+	Suitcase(int x, int y, int width, int length, Box box) {
 		super(x, y, width, length);
 		speed = 10;
+		this.box=box;
 		if (needImage) {
 			loadImage("Suitcase.png");
 
@@ -60,14 +61,17 @@ public class Suitcase extends EscapeObject implements MouseListener {
 		if (e.getX() > 370 && e.getX() < 460) {
 			if (e.getY() > 275 && e.getY() < 350) {
 				if(suitcaseOpened == false) {
-				String answer2 = JOptionPane.showInputDialog("Enter 6-digit combination to unlock.");
-				int code2 = Integer.parseInt(answer2);
-				if (code2 == 941284) {
-					JOptionPane.showMessageDialog(null, "You found the key to the Batmobile inside Batman's suitcase!");
-					suitcaseOpened = true;
-				} else {
-					JOptionPane.showMessageDialog(null, "Incorrect." );
-				}
+					if(box.BoxOpened==10) {
+						String answer2 = JOptionPane.showInputDialog("Enter 6-digit combination to unlock.");
+						int code2 = Integer.parseInt(answer2);
+						if (code2 == 941284) {
+							JOptionPane.showMessageDialog(null, "You found the key to the Batmobile inside Batman's suitcase!");
+							suitcaseOpened = true;
+						} else {
+							JOptionPane.showMessageDialog(null, "Incorrect." );
+						}
+					}
+			
 			}
 		}
 	}

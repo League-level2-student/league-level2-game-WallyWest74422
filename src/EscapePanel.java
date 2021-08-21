@@ -15,33 +15,38 @@ public class EscapePanel extends JPanel implements KeyListener, ActionListener{
 	
 	Font menuFont;
 	Font menuFont2;
+	Font endFont;
+	Font endFont2;
 	Timer frameDraw;
 	
-	Batmobile Batcar = new Batmobile(165, 250, 85, 85);
-	Clock Clack = new Clock(320,25, 65, 65);
 	Safe Saf = new Safe(90, 390, 150,150);
+	Table Lab = new Table(410, 275, 100, 50, Saf);
+	Box Xob = new Box(170, 150, 50, 50, Lab);
+	Suitcase Key = new Suitcase(350, 250, 120, 120, Xob);
+	Batmobile Batcar = new Batmobile(165, 250, 85, 85, Key);
+	Clock Clack = new Clock(320,25, 65, 65);
 	Dino Rex = new Dino(450, 160, 140, 140);
 	Penny Benny = new Penny(360, 150, 115, 115);
 	Broom Sweep = new Broom(375, 170, 75, 75, Benny);
 	Alfred Fred = new Alfred(125, 250, 150, 175, Sweep);
-	Table Lab = new Table(410, 275, 100, 50, Saf);
-	Box Xob = new Box(170, 150, 50, 50, Lab);
 	Math Ematics = new Math(155, 200, 45, 45);
 	Math2 School = new Math2(105, 120, 25, 25);
-	Suitcase Key = new Suitcase(350, 250, 120, 120);
 	Card Joker = new Card(260, 150, 90, 110);
+	Robin Dick= new Robin(320, 220, 160, 175, Xob);
 
-	EscapeManager EManager = new EscapeManager(Batcar, Clack, Saf, Fred, Lab, Xob, Sweep, Rex, Benny, Ematics, School, Key, Joker);
+	EscapeManager EManager = new EscapeManager(Batcar, Clack, Saf, Fred, Lab, Xob, Sweep, Rex, Benny, Ematics, School, Key, Joker, Dick);
 	public static BufferedImage image;
 	public static BufferedImage image2;
 	public static BufferedImage image3;
 	public static BufferedImage image4;
 	public static boolean needImage = true;
 	public static boolean gotImage = false;	
+	public static boolean gameComplete = false;
 	EscapePanel(){
 		addKeyListener(this);
 		
 		menuFont = new Font("Javanese Text", Font.PLAIN, 60);
+		endFont = new Font("Quest", Font.ITALIC, 60);
 		frameDraw = new Timer(1000 / 60, this);
 		frameDraw.start();
 		if (needImage){
@@ -158,9 +163,17 @@ EManager.draw(g);
 			EManager.draw4(g);
 	}
 
-	void drawEndState(Graphics g) {
+   void drawEndState(Graphics g) {
 		// TODO Auto-generated method stub
-		
+	   g.setColor(Color.LIGHT_GRAY);
+		g.fillRect(0, 0, GameHome.width, GameHome.height);
+		{
+			g.setFont(endFont);
+			g.setColor(Color.BLACK);
+			g.drawString("CONGRATULATIONS! ", 70, 115);
+			endFont2 = new Font("Quest", Font.PLAIN, 80);
+			g.setFont(endFont2);
+			g.drawString("You escaped the Batcave!", 100, 225);}
 	}
 
 
@@ -200,6 +213,9 @@ EManager.draw(g);
 				addMouseListener(Lab);
 				removeMouseListener(Fred);
 				removeMouseListener(Xob);
+				if(gameComplete=true) {
+					currentState = END;
+				}
 			} else if (currentState == GAME2) {
 				currentState = GAME3;
 				addMouseListener(Saf);
@@ -236,12 +252,14 @@ EManager.draw(g);
 			if((Sweep.BroomTaken == 2) && (currentState == GAME)){
 				currentState = GAME4;
 				addMouseListener(Key);
+				addMouseListener(Dick);
 				removeMouseListener(Fred);
 				removeMouseListener(Xob);
 			}
 		} if (e.getKeyCode()== KeyEvent.VK_DOWN) {
 			if(currentState == GAME4) {
 				removeMouseListener(Key);
+				removeMouseListener(Dick);
 				addMouseListener(Fred);
 				addMouseListener(Xob);
 				currentState = GAME;
