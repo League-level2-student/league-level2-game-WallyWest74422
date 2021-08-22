@@ -56,7 +56,7 @@ private Penny penny;
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		if (e.getX() > 375 && e.getX() < 450) {
+		if (e.getX() > 380 && e.getX() < 430) {
 			if (e.getY() > 170 && e.getY() < 245) {
 				if(penny.PennyMoved == 3) {
 					if(BroomTaken <1) {

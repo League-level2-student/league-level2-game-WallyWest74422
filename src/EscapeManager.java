@@ -14,8 +14,9 @@ Math2 School;
 Suitcase Key;
 Card Joker;
 Robin Dick;
+Computer Laptop;
 
-EscapeManager(Batmobile a, Clock b, Safe c, Alfred d, Table e, Box f, Broom g, Dino h, Penny i, Math j, Math2 k, Suitcase l, Card m, Robin n) {
+EscapeManager(Batmobile a, Clock b, Safe c, Alfred d, Table e, Box f, Broom g, Dino h, Penny i, Math j, Math2 k, Suitcase l, Card m, Robin n, Computer o) {
 	Batcar = a;
 	Clack = b;
 	Saf = c;
@@ -30,6 +31,7 @@ EscapeManager(Batmobile a, Clock b, Safe c, Alfred d, Table e, Box f, Broom g, D
 	Key = l;
 	Joker = m;
 	Dick = n;
+	Laptop = o;
 }
 
 void update() {
@@ -47,6 +49,7 @@ void update() {
 	Key.update();
 	Joker.update();
 	Dick.update();
+	Laptop.update();
 	}
 
 public void draw(Graphics g) {
@@ -71,6 +74,7 @@ public void draw3(Graphics g) {
 public void draw4(Graphics g) {
 	Key.draw(g);
 	Dick.draw(g);
+	Laptop.draw(g);
 }
 
 }

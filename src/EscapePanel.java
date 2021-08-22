@@ -25,7 +25,7 @@ public class EscapePanel extends JPanel implements KeyListener, ActionListener {
 	Suitcase Key = new Suitcase(350, 250, 120, 120, Xob);
 	Batmobile Batcar = new Batmobile(165, 250, 85, 85, Key);
 	Clock Clack = new Clock(320, 25, 65, 65);
-	Dino Rex = new Dino(450, 160, 140, 140);
+	Dino Rex = new Dino(460, 160, 130, 130);
 	Penny Benny = new Penny(360, 150, 115, 115);
 	Broom Sweep = new Broom(375, 170, 75, 75, Benny);
 	Alfred Fred = new Alfred(125, 250, 150, 175, Sweep);
@@ -33,9 +33,9 @@ public class EscapePanel extends JPanel implements KeyListener, ActionListener {
 	Math2 School = new Math2(105, 120, 25, 25);
 	Card Joker = new Card(260, 150, 90, 110);
 	Robin Dick = new Robin(320, 220, 160, 175, Xob);
+	Computer Laptop = new Computer(130, 335, 80, 80);
 
-	EscapeManager EManager = new EscapeManager(Batcar, Clack, Saf, Fred, Lab, Xob, Sweep, Rex, Benny, Ematics, School,
-			Key, Joker, Dick);
+	EscapeManager EManager = new EscapeManager(Batcar, Clack, Saf, Fred, Lab, Xob, Sweep, Rex, Benny, Ematics, School, Key, Joker, Dick, Laptop);
 	public static BufferedImage image;
 	public static BufferedImage image2;
 	public static BufferedImage image3;
@@ -46,6 +46,8 @@ public class EscapePanel extends JPanel implements KeyListener, ActionListener {
 
 	EscapePanel() {
 		addKeyListener(this);
+		addMouseListener(Fred);
+		addMouseListener(Xob);
 
 		menuFont = new Font("Javanese Text", Font.PLAIN, 60);
 		endFont = new Font("Quest", Font.ITALIC, 50);
@@ -174,11 +176,11 @@ public class EscapePanel extends JPanel implements KeyListener, ActionListener {
 		{
 			g.setFont(endFont);
 			g.setColor(Color.BLACK);
-			g.drawString("CONGRATULATIONS! ", 50, 115);
+			g.drawString("CONGRATULATIONS! ", 40, 140);
 			endFont2 = new Font("Quest", Font.ITALIC, 70);
 			g.setFont(endFont2);
-			g.drawString("You escaped the", 50, 225);
-			g.drawString("Batcave!", 50, 300);
+			g.drawString("You escaped the", 40, 250);
+			g.drawString("Batcave!", 125, 345);
 		}
 	}
 
@@ -260,6 +262,7 @@ public class EscapePanel extends JPanel implements KeyListener, ActionListener {
 				currentState = GAME4;
 				addMouseListener(Key);
 				addMouseListener(Dick);
+				addMouseListener(Laptop);
 				removeMouseListener(Fred);
 				removeMouseListener(Xob);
 			}
@@ -268,6 +271,7 @@ public class EscapePanel extends JPanel implements KeyListener, ActionListener {
 			if (currentState == GAME4) {
 				removeMouseListener(Key);
 				removeMouseListener(Dick);
+				removeMouseListener(Laptop);
 				addMouseListener(Fred);
 				addMouseListener(Xob);
 				currentState = GAME;

@@ -7,15 +7,16 @@ import javax.swing.JOptionPane;
 
 import java.awt.Color;
 import java.awt.Graphics;
-public class Dino extends EscapeObject implements MouseListener{
+public class Computer extends EscapeObject implements MouseListener{
 	public static BufferedImage image;
 	public static boolean needImage = true;
 	public static boolean gotImage = false;
-	Dino(int x, int y, int width, int length) {
+	Boolean batarangFound = false;
+	Computer(int x, int y, int width, int length) {
 		super(x, y, width, length);
-		speed = 10;
+		speed = 100;
 		if (needImage) {
-			loadImage("Dino.png");
+			loadImage("Laptop.png");
 
 		}
 	}
@@ -54,12 +55,13 @@ public class Dino extends EscapeObject implements MouseListener{
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		if (e.getX() > 479 && e.getX() < 575) {
-			if (e.getY() > 160 && e.getY() < 275) {
-				JOptionPane.showMessageDialog(null, "Woah! Thats a cool Dinosaur! Probably won't help you escape though. :(");
+		if (e.getX() > 130 && e.getX() < 215) {
+			if (e.getY() > 335 && e.getY() < 415) {
+				JOptionPane.showMessageDialog(null, "I can't seem to turn it on! It's almost like it's not a real computer and just an image off of Google...");
+			}
 		}
 	}
-	}
+
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
@@ -77,5 +79,4 @@ public class Dino extends EscapeObject implements MouseListener{
 		// TODO Auto-generated method stub
 
 	}
-
 }

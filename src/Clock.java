@@ -49,6 +49,11 @@ public void mouseClicked(MouseEvent e) {
 @Override
 public void mousePressed(MouseEvent e) {
 	// TODO Auto-generated method stub
+	if (e.getX()>240 && e.getX()<300) {
+		if(e.getY()>125 && e.getY()<175) {
+			JOptionPane.showMessageDialog(null, "Cool costumes!");
+		}
+	}
 	if (e.getX()>320 && e.getX()<385) {
 		if(e.getY()>25 && e.getY()<90) {
 	JOptionPane.showMessageDialog(null, "Could be a clue? Probably not. I mean, it's just a clock.");

@@ -57,13 +57,19 @@ public class Alfred extends EscapeObject implements MouseListener {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
+		if (e.getX() > 380 && e.getX() < 520) {
+			if (e.getY() > 0 && e.getY() < 125) {
+JOptionPane.showMessageDialog(null, "All these screens are so confusing!");
+			}
+		}
 		if (e.getX() > 155 && e.getX() < 230) {
 			if (e.getY() > 250 && e.getY() < 425) {
-				if(broom.BroomTaken ==1) {
-					JOptionPane.showMessageDialog(null, "Thank you so much! Here is the key to Wayne Manor. Use the UP key to access it." );
-					broom.BroomTaken =2;
-				}else if (broom.BroomTaken==0){
-				JOptionPane.showMessageDialog(null, "I will help you if you can return my broom to me!");
+				if (broom.BroomTaken == 1) {
+					JOptionPane.showMessageDialog(null,
+							"Thank you so much! Here is the key to Wayne Manor. Use the UP key to access it.");
+					broom.BroomTaken = 2;
+				} else if (broom.BroomTaken == 0) {
+					JOptionPane.showMessageDialog(null, "I will help you if you can return my broom to me!");
 				}
 			}
 		}
